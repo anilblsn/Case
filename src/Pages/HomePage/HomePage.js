@@ -6,18 +6,22 @@ import EditMoviePopup from '../../components/EditMoviePopUp/EditMoviePopup';
 import './HomePage.css';
 
 const HomePage = () => {
+  // Redux store'dan movies verisini almak için useSelector hook'u kullanılır
   const movies = useSelector((state) => state.movies);
-  const dispatch = useDispatch();
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const dispatch = useDispatch();  // Redux store'a dispatch işlemi yapmak için useDispatch hook'u kullanılır
+  const [selectedMovie, setSelectedMovie] = useState(null);  // Seçilen film bilgisini tutmak için state tanımlanır
 
+  // Seçilen filmin silinmesi için deleteMovie action'ı dispatch edilir
   const handleDelete = (id) => {
     dispatch(deleteMovie(id));
   };
 
+  // Filmin düzenleme işlemi için seçilen film bilgisi state'e atanır
   const handleEdit = (movie) => {
     setSelectedMovie(movie);
   };
 
+  // EditMoviePopup bileşeninin kapatılması için selectedMovie state'i sıfırlanır
   const handleEditPopupClose = () => {
     setSelectedMovie(null);
   };
