@@ -37,6 +37,10 @@ const Admin = () => {
   };
 
   const handleSubmit = (e) => {
+    if( !title || !year || !author){
+      alert('lütfen alanları doldurunuz')
+      return;
+    }
     e.preventDefault();
     const formData = new FormData();
     formData.append('title', title);
